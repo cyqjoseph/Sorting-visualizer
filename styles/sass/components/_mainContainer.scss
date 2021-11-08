@@ -1,0 +1,22 @@
+.mainContainer {
+  padding: 2rem;
+  border: 1px solid white;
+  display: flex;
+  height: 80vh;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  &__items {
+    height: 100%;
+    width: 100%;
+    border-bottom: 3px solid #e66465;
+    padding: 0 2rem;
+
+    &-element {
+      display: inline-block;
+      background-color: white;
+      vertical-align: bottom;
+      background: linear-gradient(#e66465, #b4baff);
+    }
+  }
+}

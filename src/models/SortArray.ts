@@ -22,7 +22,7 @@ export class SortArray {
     return sortArray;
   }
   private initializeSortBar(i: number): SortBar {
-    return new SortBar(i, Math.floor(Math.random() * 10 * i));
+    return new SortBar(i, i, this.lengthArr);
   }
 
   initializeSortArray(): SortBar[] {

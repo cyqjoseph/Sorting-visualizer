@@ -7,7 +7,7 @@ import "./main.css";
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <div>
+      <div className="page">
         <SidebarNavigation />
         <App />
       </div>

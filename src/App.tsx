@@ -1,10 +1,14 @@
 import React from "react";
-import { SortArray } from "./models/SortArray";
+
 import "bootstrap/dist/css/bootstrap.min.css";
+import Layout from "./components/layout/Layout";
 
 function App(): JSX.Element {
-  console.log(new SortArray(30).initializeSortArray());
-  return <div></div>;
+  return (
+    <div className="page__container">
+      <Layout />
+    </div>
+  );
 }
 
 export default App;

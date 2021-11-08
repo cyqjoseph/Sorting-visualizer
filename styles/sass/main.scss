@@ -1,6 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap");
 @import "./components/layout";
 @import "./components/sidebar";
+@import "./components/mainContainer";
+@import "./components/settings";
 html {
   box-sizing: border-box;
   font-size: 62.5%;

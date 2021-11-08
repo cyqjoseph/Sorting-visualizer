@@ -8,24 +8,52 @@ import {
 import { HiArrowSmDown } from "react-icons/hi";
 import { BiSelectMultiple, BiRun, BiGitMerge } from "react-icons/bi";
 import { CgBoy } from "react-icons/cg";
+import { Link } from "react-router-dom";
 const SidebarBody = function (): JSX.Element {
   return (
     <SidebarContent>
       <Menu iconShape="square">
         <SubMenu title="Quadratic">
-          <MenuItem icon={<GiBubbles />}>Bubble Sort</MenuItem>
-          <MenuItem icon={<HiArrowSmDown />}>Insertion Sort</MenuItem>
-          <MenuItem icon={<BiSelectMultiple />}>Selection Sort</MenuItem>
-          <MenuItem icon={<GiEmptyMetalBucketHandle />}>Bucket Sort</MenuItem>
+          <MenuItem icon={<GiBubbles />}>
+            Bubble Sort
+            <Link to="/bubble" />
+          </MenuItem>
+          <MenuItem icon={<HiArrowSmDown />}>
+            Insertion Sort
+            <Link to="/insertion" />
+          </MenuItem>
+          <MenuItem icon={<BiSelectMultiple />}>
+            Selection Sort
+            <Link to="/selection" />
+          </MenuItem>
+          <MenuItem icon={<GiEmptyMetalBucketHandle />}>
+            Bucket Sort
+            <Link to="/bucket" />
+          </MenuItem>
         </SubMenu>
         <SubMenu title="Logarithmic">
-          <MenuItem icon={<BiRun />}>Quick Sort</MenuItem>
-          <MenuItem icon={<BiGitMerge />}>Merge Sort</MenuItem>
-          <MenuItem icon={<GiBookPile />}>Heap Sort</MenuItem>
-          <MenuItem icon={<CgBoy />}>Tim Sort</MenuItem>
+          <MenuItem icon={<BiRun />}>
+            Quick Sort
+            <Link to="/quick" />
+          </MenuItem>
+          <MenuItem icon={<BiGitMerge />}>
+            Merge Sort
+            <Link to="/merge" />
+          </MenuItem>
+          <MenuItem icon={<GiBookPile />}>
+            Heap Sort
+            <Link to="/heap" />
+          </MenuItem>
+          <MenuItem icon={<CgBoy />}>
+            Tim Sort
+            <Link to="/tim" />
+          </MenuItem>
         </SubMenu>
         <SubMenu title="Bruh">
-          <MenuItem icon={<GiMonkey />}>Bogo Sort</MenuItem>
+          <MenuItem icon={<GiMonkey />}>
+            Bogo Sort
+            <Link to="/bogo" />
+          </MenuItem>
         </SubMenu>
       </Menu>
     </SidebarContent>
