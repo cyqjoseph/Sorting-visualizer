@@ -2,7 +2,12 @@ import { SortArray } from "../../models/SortArray";
 import { SortBar } from "../../models/SortBar";
 
 import { useState, useEffect } from "react";
-const MainContainer = function (): JSX.Element {
+
+interface Props {
+  length?: number;
+}
+
+const MainContainer = function (props: Props): JSX.Element {
   const [array, setArray] = useState<SortBar[]>([]);
   console.log(new SortArray(50).initializeSortArray());
 

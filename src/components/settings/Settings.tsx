@@ -1,13 +1,20 @@
-import { useState } from "react";
+import React, { useState } from "react";
 const Settings = function (): JSX.Element {
   const [elementsNum, setElementsNum] = useState<number>(100);
   const [iteration, setIteration] = useState<number>(1);
-  const sliderHandler = function (e: any): void {
-    setElementsNum(e.target.value);
+
+  const sliderHandler = function (
+    e: React.SyntheticEvent<HTMLInputElement, KeyboardEvent>
+  ): void {
+    setElementsNum(+e.currentTarget.value);
   };
-  const iterationHandler = function (e: any): void {
-    setIteration(e.target.value);
+
+  const iterationHandler = function (
+    e: React.SyntheticEvent<HTMLInputElement, KeyboardEvent>
+  ): void {
+    setIteration(+e.currentTarget.value);
   };
+
   return (
     <section className="settings">
       <div className="settings__scroll">
