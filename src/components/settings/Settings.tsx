@@ -1,5 +1,9 @@
 import React, { useState } from "react";
-const Settings = function (): JSX.Element {
+interface SettingsProps {
+  onSubmit(length: number, iteration: number): void;
+  onRandomize(): void;
+}
+const Settings = function (props: SettingsProps): JSX.Element {
   const [elementsNum, setElementsNum] = useState<number>(100);
   const [iteration, setIteration] = useState<number>(1);
 
@@ -7,6 +11,7 @@ const Settings = function (): JSX.Element {
     e: React.SyntheticEvent<HTMLInputElement, KeyboardEvent>
   ): void {
     setElementsNum(+e.currentTarget.value);
+    props.onSubmit(+e.currentTarget.value, iteration);
   };
 
   const iterationHandler = function (
@@ -32,7 +37,10 @@ const Settings = function (): JSX.Element {
           />
           <label htmlFor="elements-num"></label>
         </div>
-        <button>Start</button>
+        <button onClick={props.onSubmit.bind(null, elementsNum, iteration)}>
+          Start
+        </button>
+        <button onClick={props.onRandomize}>Randomize</button>
         <div className="settings__scroll-iterations">
           Time between each iteration: {iteration}s
           <input

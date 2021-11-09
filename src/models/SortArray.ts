@@ -21,15 +21,20 @@ export class SortArray {
     }
     return sortArray;
   }
+
   private initializeSortBar(i: number): SortBar {
     return new SortBar(i, i, this.lengthArr);
   }
 
-  initializeSortArray(): SortBar[] {
-    for (let i = this.lengthArr; i > 0; i--) {
+  public initializeSortArray(): SortBar[] {
+    for (let i = 1; i <= this.lengthArr; i++) {
       this.sortArray.push(this.initializeSortBar(i));
     }
-    this.shuffleArray(this.sortArray);
+    return this.sortArray;
+  }
+
+  public randomizeSortArray(): SortBar[] {
+    this.shuffleArray(this.initializeSortArray());
     return this.sortArray;
   }
 }

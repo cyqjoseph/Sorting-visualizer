@@ -3,17 +3,20 @@ import { SortBar } from "../../models/SortBar";
 
 import { useState, useEffect } from "react";
 
-interface Props {
-  length?: number;
+interface SettingsProps {
+  settings: { length: number; iteration: number; randomize: boolean };
 }
 
-const MainContainer = function (props: Props): JSX.Element {
+const MainContainer = function (props: SettingsProps): JSX.Element {
   const [array, setArray] = useState<SortBar[]>([]);
-  console.log(new SortArray(50).initializeSortArray());
-
   useEffect(() => {
-    setArray(new SortArray(4).initializeSortArray());
-  }, []);
+    if (props.settings.randomize === false) {
+      setArray(new SortArray(props.settings.length).initializeSortArray());
+    } else {
+      setArray(new SortArray(props.settings.length).randomizeSortArray());
+    }
+  }, [props]);
+
   return (
     <section className="mainContainer">
       <div className="mainContainer__items">
