@@ -1,3 +1,4 @@
+import { BubbleSort } from "../sorts";
 import { SortBar } from "./SortBar";
 export class SortArray {
   private sortArray: SortBar[];
@@ -23,7 +24,7 @@ export class SortArray {
   }
 
   private initializeSortBar(i: number): SortBar {
-    return new SortBar(i, i, this.lengthArr);
+    return new SortBar(i, i, this.lengthArr, "");
   }
 
   public initializeSortArray(): SortBar[] {
@@ -36,5 +37,9 @@ export class SortArray {
   public randomizeSortArray(): SortBar[] {
     this.shuffleArray(this.initializeSortArray());
     return this.sortArray;
+  }
+
+  public sort(): SortBar[] {
+    return BubbleSort(this.sortArray);
   }
 }
