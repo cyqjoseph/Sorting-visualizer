@@ -1,5 +1,5 @@
 import { SortBar } from "../../models/SortBar";
-import { Swap } from "../Swap";
+import { swap } from "../Helpers";
 
 export function BubbleSort(sortArr: SortBar[]): SortBar[] {
   let len: number = sortArr.length;
@@ -9,7 +9,7 @@ export function BubbleSort(sortArr: SortBar[]): SortBar[] {
 
     for (let j = 0; j < len - i - 1; j++) {
       if (sortArr[j].height > sortArr[j + 1].height) {
-        Swap(sortArr[j], sortArr[j + 1]);
+        swap(sortArr[j], sortArr[j + 1]);
         // flag = true;
       }
     }
