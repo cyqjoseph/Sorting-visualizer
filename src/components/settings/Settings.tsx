@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import Context, { ContextInterface } from "../../store/context";
 interface SettingsProps {
   onSubmit(length: number, iteration: number): void;
   onRandomize(): void;
@@ -6,6 +7,11 @@ interface SettingsProps {
 const Settings = function (props: SettingsProps): JSX.Element {
   const [elementsNum, setElementsNum] = useState<number>(100);
   const [iteration, setIteration] = useState<number>(1);
+  const Ctx: ContextInterface = useContext(Context);
+
+  const startHandler = function (): void {
+    Ctx.startHandler();
+  };
 
   const sliderHandler = function (
     e: React.SyntheticEvent<HTMLInputElement, KeyboardEvent>
@@ -37,6 +43,7 @@ const Settings = function (props: SettingsProps): JSX.Element {
           />
           <label htmlFor="elements-num"></label>
         </div>
+        <button onClick={startHandler}>Real Start</button>
         <button onClick={props.onSubmit.bind(null, elementsNum, iteration)}>
           Start
         </button>

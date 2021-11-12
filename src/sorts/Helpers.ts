@@ -15,11 +15,9 @@ export function sleep(delay: number): Promise<void> {
 }
 
 export function swap(left: SortBar, right: SortBar): void {
-  setTimeout(() => {
-    let temp: SortBar = left;
-    left = right;
-    right = temp;
-  }, 1000);
+  let temp: SortBar = left;
+  left = right;
+  right = temp;
 }
 
 export function isSorted(elements: SortBar[]): boolean {

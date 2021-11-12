@@ -9,8 +9,11 @@ export function BubbleSort(sortArr: SortBar[]): SortBar[] {
 
     for (let j = 0; j < len - i - 1; j++) {
       if (sortArr[j].height > sortArr[j + 1].height) {
-        swap(sortArr[j], sortArr[j + 1]);
+        // swap(sortArr[j], sortArr[j + 1]);
         // flag = true;
+        let temp: SortBar = sortArr[j];
+        sortArr[j] = sortArr[j + 1];
+        sortArr[j + 1] = temp;
       }
     }
     sortArr[len - 1 - i].color = "#58ff58";
