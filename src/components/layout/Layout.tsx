@@ -1,13 +1,14 @@
 import MainContainer from "../main/MainContainer";
 import Settings from "../settings/Settings";
 import { useState } from "react";
-const Layout = function (): JSX.Element {
+const Layout: React.FC = function (): JSX.Element {
   const [settings, setSettings] = useState<{
     length: number;
     iteration: number;
     randomize: boolean;
   }>({ length: 100, iteration: 1, randomize: false });
-  const submitHandler = function (length: number, iteration: number) {
+
+  const submitHandler = function (length: number, iteration: number): void {
     // will trigger sorting logic here
     setSettings({ length, iteration, randomize: false });
   };

@@ -9,7 +9,7 @@ interface SettingsProps {
   settings: { length: number; iteration: number; randomize: boolean };
 }
 
-const MainContainer = function (props: SettingsProps): JSX.Element {
+const MainContainer: React.FC<SettingsProps> = function (props): JSX.Element {
   const [array, setArray] = useState<SortBar[]>([]);
   const Ctx: ContextInterface = useContext(Context);
 

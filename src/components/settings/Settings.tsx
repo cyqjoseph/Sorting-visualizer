@@ -4,7 +4,7 @@ interface SettingsProps {
   onSubmit(length: number, iteration: number): void;
   onRandomize(): void;
 }
-const Settings = function (props: SettingsProps): JSX.Element {
+const Settings: React.FC<SettingsProps> = function (props): JSX.Element {
   const [elementsNum, setElementsNum] = useState<number>(100);
   const [iteration, setIteration] = useState<number>(1);
   const Ctx: ContextInterface = useContext(Context);

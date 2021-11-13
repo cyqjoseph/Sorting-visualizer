@@ -1,7 +1,7 @@
 import { ProSidebar, SidebarFooter, SidebarHeader } from "react-pro-sidebar";
 import SidebarBody from "./components/SidebarBody";
 import "react-pro-sidebar/dist/css/styles.css";
-const SidebarNavigation = function (): JSX.Element {
+const SidebarNavigation: React.FC = function (): JSX.Element {
   return (
     <ProSidebar width="23rem">
       <SidebarHeader>

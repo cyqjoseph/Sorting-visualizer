@@ -9,7 +9,7 @@ import { HiArrowSmDown } from "react-icons/hi";
 import { BiSelectMultiple, BiRun, BiGitMerge } from "react-icons/bi";
 import { CgBoy } from "react-icons/cg";
 import { Link } from "react-router-dom";
-const SidebarBody = function (): JSX.Element {
+const SidebarBody: React.FC = function (): JSX.Element {
   return (
     <SidebarContent>
       <Menu iconShape="square">
