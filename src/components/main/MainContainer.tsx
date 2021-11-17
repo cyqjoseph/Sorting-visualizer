@@ -11,6 +11,8 @@ interface SettingsProps {
 
 const MainContainer: React.FC<SettingsProps> = function (props): JSX.Element {
   const [array, setArray] = useState<SortBar[]>([]);
+  // const [tempArray, setTempArray] = useState<SortBar[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const Ctx: ContextInterface = useContext(Context);
 
   const randomize = useCallback(() => {
@@ -23,28 +25,24 @@ const MainContainer: React.FC<SettingsProps> = function (props): JSX.Element {
 
   useEffect(() => {
     if (Ctx.start) {
-      const sorted = BubbleSort(array);
-      setArray(sorted);
+      (async function () {
+        setIsLoading(true);
+        await BubbleSort(array, Ctx); //connect these two lines of logic
+        setArray(array);
+        setIsLoading(false);
+      })();
+      console.log("sorted", array);
     }
-    console.log(array);
-  }, [Ctx.start, array]);
-  console.log(array);
-  // useEffect(() => {
-  //   if (props.settings.randomize === false) {
-  //     setArray(new SortArray(props.settings.length).initializeSortArray());
-  //   } else {
-  //     randomize();
-
-  //     setArray(BubbleSort(array));
-  //     console.log(array);
-  //   }
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [props]);
+  }, [Ctx.start]);
 
   return (
     <section className="mainContainer">
       <div className="mainContainer__items">
-        {array.map((sortBar: SortBar) => sortBar.renderSortBar())}
+        {!isLoading && array.map((sortBar: SortBar) => sortBar.renderSortBar())}
+        {isLoading &&
+          Ctx.arrayBeingSorted.map((sortBar: SortBar) =>
+            sortBar.renderSortBar()
+          )}
       </div>
     </section>
   );

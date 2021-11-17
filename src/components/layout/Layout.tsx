@@ -6,7 +6,7 @@ const Layout: React.FC = function (): JSX.Element {
     length: number;
     iteration: number;
     randomize: boolean;
-  }>({ length: 100, iteration: 1, randomize: false });
+  }>({ length: 5, iteration: 1, randomize: false });
 
   const submitHandler = function (length: number, iteration: number): void {
     // will trigger sorting logic here

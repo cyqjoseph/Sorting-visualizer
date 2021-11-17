@@ -1,7 +1,11 @@
 import { SortBar } from "../../models/SortBar";
-import { swap } from "../Helpers";
+import { sleep } from "../Helpers";
+import { ContextInterface } from "../../store/context";
 
-export function BubbleSort(sortArr: SortBar[]): SortBar[] {
+export async function BubbleSort(
+  sortArr: SortBar[],
+  Ctx: ContextInterface
+): Promise<SortBar[]> {
   let len: number = sortArr.length;
   //   let flag: boolean = false;
   for (let i = 0; i < len - 1; i++) {
@@ -11,9 +15,12 @@ export function BubbleSort(sortArr: SortBar[]): SortBar[] {
       if (sortArr[j].height > sortArr[j + 1].height) {
         // swap(sortArr[j], sortArr[j + 1]);
         // flag = true;
+        await sleep(1000);
         let temp: SortBar = sortArr[j];
         sortArr[j] = sortArr[j + 1];
         sortArr[j + 1] = temp;
+        Ctx.setHandler(sortArr);
+        console.log(Ctx.arrayBeingSorted);
       }
     }
     sortArr[len - 1 - i].color = "#58ff58";

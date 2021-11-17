@@ -39,7 +39,7 @@ export class SortArray {
     return this.sortArray;
   }
 
-  public sort(): SortBar[] {
-    return BubbleSort(this.sortArray);
-  }
+  // public async sort(): Promise<SortBar[]> {
+  //   return await BubbleSort(this.sortArray);
+  // }
 }

@@ -5,7 +5,7 @@ interface SettingsProps {
   onRandomize(): void;
 }
 const Settings: React.FC<SettingsProps> = function (props): JSX.Element {
-  const [elementsNum, setElementsNum] = useState<number>(100);
+  const [elementsNum, setElementsNum] = useState<number>(5);
   const [iteration, setIteration] = useState<number>(1);
   const Ctx: ContextInterface = useContext(Context);
 
@@ -43,10 +43,10 @@ const Settings: React.FC<SettingsProps> = function (props): JSX.Element {
           />
           <label htmlFor="elements-num"></label>
         </div>
-        <button onClick={startHandler}>Real Start</button>
-        <button onClick={props.onSubmit.bind(null, elementsNum, iteration)}>
+        <button onClick={startHandler}>Start</button>
+        {/* <button onClick={props.onSubmit.bind(null, elementsNum, iteration)}>
           Start
-        </button>
+        </button> */}
         <button onClick={props.onRandomize}>Randomize</button>
         <div className="settings__scroll-iterations">
           Time between each iteration: {iteration}s
