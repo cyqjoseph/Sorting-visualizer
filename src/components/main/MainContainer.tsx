@@ -1,48 +1,28 @@
-import { SortArray } from "../../models/SortArray";
 import { SortBar } from "../../models/SortBar";
-import { useState, useEffect, useCallback, useContext } from "react";
-import Context, { ContextInterface } from "../../store/context";
-
-import { BubbleSort } from "../../sorts";
-
+import { useEffect } from "react";
+import { useActions } from "../../hooks/use-actions";
+// import { BubbleSort } from "../../sorts";
+import { useTypedSelector } from "../../hooks/use-typed-selector";
+// import { store } from "../../state/store";
 interface SettingsProps {
   settings: { length: number; iteration: number; randomize: boolean };
 }
 
 const MainContainer: React.FC<SettingsProps> = function (props): JSX.Element {
-  const [array, setArray] = useState<SortBar[]>([]);
-  // const [tempArray, setTempArray] = useState<SortBar[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const Ctx: ContextInterface = useContext(Context);
-
-  const randomize = useCallback(() => {
-    setArray(new SortArray(props.settings.length).randomizeSortArray());
-  }, [props]);
-
+  const cells = useTypedSelector(({ sortArray: { data } }) => {
+    return data;
+  });
+  const { randomize } = useActions();
   useEffect(() => {
-    randomize();
-  }, [randomize]);
+    randomize(props.settings.length);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  useEffect(() => {
-    if (Ctx.start) {
-      (async function () {
-        setIsLoading(true);
-        await BubbleSort(array, Ctx); //connect these two lines of logic
-        setArray(array);
-        setIsLoading(false);
-      })();
-      console.log("sorted", array);
-    }
-  }, [Ctx.start]);
-
+  console.log(cells);
   return (
     <section className="mainContainer">
       <div className="mainContainer__items">
-        {!isLoading && array.map((sortBar: SortBar) => sortBar.renderSortBar())}
-        {isLoading &&
-          Ctx.arrayBeingSorted.map((sortBar: SortBar) =>
-            sortBar.renderSortBar()
-          )}
+        {cells.map((sortBar: SortBar) => sortBar.renderSortBar())}
       </div>
     </section>
   );

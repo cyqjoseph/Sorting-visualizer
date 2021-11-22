@@ -1,11 +1,7 @@
 import { SortBar } from "../../models/SortBar";
 import { sleep } from "../Helpers";
-import { ContextInterface } from "../../store/context";
 
-export async function BubbleSort(
-  sortArr: SortBar[],
-  Ctx: ContextInterface
-): Promise<SortBar[]> {
+export async function BubbleSort(sortArr: SortBar[]): Promise<SortBar[]> {
   let len: number = sortArr.length;
   //   let flag: boolean = false;
   for (let i = 0; i < len - 1; i++) {
@@ -19,8 +15,6 @@ export async function BubbleSort(
         let temp: SortBar = sortArr[j];
         sortArr[j] = sortArr[j + 1];
         sortArr[j + 1] = temp;
-        Ctx.setHandler(sortArr);
-        console.log(Ctx.arrayBeingSorted);
       }
     }
     sortArr[len - 1 - i].color = "#58ff58";

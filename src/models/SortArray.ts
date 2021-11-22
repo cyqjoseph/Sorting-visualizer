@@ -1,4 +1,3 @@
-import { BubbleSort } from "../sorts";
 import { SortBar } from "./SortBar";
 export class SortArray {
   private sortArray: SortBar[];

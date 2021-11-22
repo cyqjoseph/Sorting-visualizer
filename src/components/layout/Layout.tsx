@@ -12,13 +12,9 @@ const Layout: React.FC = function (): JSX.Element {
     // will trigger sorting logic here
     setSettings({ length, iteration, randomize: false });
   };
-
-  const randomizeHandler = function (): void {
-    setSettings({ ...settings, randomize: true });
-  };
   return (
     <div className="layout">
-      <Settings onSubmit={submitHandler} onRandomize={randomizeHandler} />
+      <Settings onSubmit={submitHandler} />
       <MainContainer settings={settings} />
     </div>
   );
