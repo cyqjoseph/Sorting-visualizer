@@ -1,6 +1,6 @@
 import { ActionType } from "../action-types";
 import { SortType } from "../../enums";
-
+import { SortBar } from "../../models/SortBar";
 export interface SortStartAction {
   type: ActionType.SORT_START;
   payload: {
@@ -11,7 +11,10 @@ export interface SortStartAction {
 
 export interface SortPendingAction {
   type: ActionType.SORT_PENDING;
-  payload: {};
+  payload: {
+    sortType: SortType;
+    data: SortBar[];
+  };
 }
 export interface SortCompleteAction {
   type: ActionType.SORT_COMPLETE;
