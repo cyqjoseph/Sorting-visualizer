@@ -23,12 +23,38 @@ export const pendingArraySorting = function (
   sortType: SortType,
   data: SortBar[]
 ) {
+  // Check if array sorted
+  if (isSorted(data)) {
+    completeArraySorting();
+  } else {
+    console.log("Call to render");
+    renderArraySorting(sortType, data);
+  }
+
+  // If array sorted dispatch complete array
   return async (dispatch: Dispatch<Action>) => {
-    dispatch({ type: ActionType.SORT_PENDING, payload: { sortType, data } }); //dispatch in sort
+    dispatch({
+      type: ActionType.SORT_RENDER,
+      payload: { sortType, data },
+    }); //dispatch in sort
+  };
+};
+
+export const renderArraySorting = function (
+  sortType: SortType,
+  data: SortBar[]
+) {
+  const sorted = BubbleSort(data);
+  console.log("Call back to pending");
+  pendingArraySorting(sortType, data);
+  return {
+    type: ActionType.SORT_PENDING,
+    payload: { sortType, data: sorted },
   };
 };
 
 export const completeArraySorting = function () {
+  console.log("Finished");
   return {
     type: ActionType.SORT_COMPLETE,
     payload: { loading: false },

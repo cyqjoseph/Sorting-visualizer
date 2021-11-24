@@ -4,7 +4,7 @@ import { SortArray } from "../../models/SortArray";
 import { SortBar } from "../../models/SortBar";
 import { SortType } from "../../enums";
 // import produce from "immer";
-import { BubbleSort } from "../../sorts/Algorithms/BubbleSort";
+
 interface SortArrayState {
   loading: boolean;
   data: SortBar[];
@@ -21,9 +21,6 @@ const reducer = function (
   state: SortArrayState = initialState,
   action: Action
 ): SortArrayState {
-  if (!state) {
-    return initialState;
-  }
   switch (action.type) {
     case ActionType.RANDOMIZE:
       return {
@@ -41,16 +38,19 @@ const reducer = function (
       const { data, sortType } = action.payload;
       switch (sortType) {
         case SortType.BUBBLE:
-          console.log("Pending");
-          const sortedArr = BubbleSort(data);
-          return { ...state, data: sortedArr };
+          return { ...state, data };
         default:
           return state;
       }
-    // Mutate data here somehow?
+    case ActionType.SORT_RENDER:
+      return {
+        ...state,
+        sortType: action.payload.sortType,
+        data: action.payload.data,
+      };
     case ActionType.SORT_COMPLETE:
-      console.log("Completed");
       return { ...state, loading: action.payload.loading };
+
     default:
       return state;
   }

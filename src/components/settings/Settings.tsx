@@ -1,18 +1,14 @@
 import React, { useState } from "react";
 import { SortType } from "../../enums";
 import { useActions } from "../../hooks/use-actions";
-import { useStore } from "react-redux";
-import { BubbleSort } from "../../sorts";
-import { isSorted } from "../../sorts/Helpers";
 
 interface SettingsProps {
   onSubmit(length: number, iteration: number): void;
 }
 const Settings: React.FC<SettingsProps> = function (props): JSX.Element {
-  const { randomize, startArraySorting } = useActions();
+  const { randomize, startArraySorting, completeArraySorting } = useActions();
   const [elementsNum, setElementsNum] = useState<number>(5);
   const [iteration, setIteration] = useState<number>(1);
-  const store = useStore();
   const sliderHandler = function (
     e: React.SyntheticEvent<HTMLInputElement, KeyboardEvent>
   ): void {
@@ -51,6 +47,7 @@ const Settings: React.FC<SettingsProps> = function (props): JSX.Element {
         <button
           onClick={() => {
             randomize(elementsNum);
+            completeArraySorting();
           }}
         >
           Randomize

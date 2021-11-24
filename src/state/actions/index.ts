@@ -16,6 +16,15 @@ export interface SortPendingAction {
     data: SortBar[];
   };
 }
+
+export interface SortRenderAction {
+  type: ActionType.SORT_RENDER;
+  payload: {
+    sortType: SortType;
+    data: SortBar[];
+  };
+}
+
 export interface SortCompleteAction {
   type: ActionType.SORT_COMPLETE;
   payload: {
@@ -31,4 +40,5 @@ export type Action =
   | SortCompleteAction
   | SortPendingAction
   | SortStartAction
-  | RandomizeAction;
+  | RandomizeAction
+  | SortRenderAction;

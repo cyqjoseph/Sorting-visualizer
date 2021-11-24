@@ -1,9 +1,10 @@
 import { SortBar } from "../../models/SortBar";
-import { sleep } from "../Helpers";
-import { useDispatch, useStore } from "react-redux";
-import { ActionType } from "../../state/action-types";
+// import { sleep } from "../Helpers";
+// import { useDispatch, useStore } from "react-redux";
+// import { ActionType } from "../../state/action-types";
 
 export function BubbleSort(sortArr: SortBar[]): SortBar[] {
+  // const dispatch = useDispatch();
   let len: number = sortArr.length;
   //   let flag: boolean = false;
   for (let i = 0; i < len - 1; i++) {
@@ -13,7 +14,7 @@ export function BubbleSort(sortArr: SortBar[]): SortBar[] {
         let temp: SortBar = sortArr[j];
         sortArr[j] = sortArr[j + 1];
         sortArr[j + 1] = temp;
-        // useDispatch({type: ActionType.SORT_PENDING})
+        // dispatch({ type: ActionType.SORT_PENDING });
       }
     }
     sortArr[len - 1 - i].color = "#58ff58";
