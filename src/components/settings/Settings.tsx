@@ -3,7 +3,12 @@ import { SortType } from "../../enums";
 import { useActions } from "../../hooks/use-actions";
 
 interface SettingsProps {
-  onSubmit(length: number, iteration: number): void;
+  onSubmit(
+    length: number,
+    iteration: number,
+    randomize: boolean,
+    loading: boolean
+  ): void;
 }
 const Settings: React.FC<SettingsProps> = function (props): JSX.Element {
   const { randomize, startArraySorting, completeArraySorting } = useActions();
@@ -13,7 +18,7 @@ const Settings: React.FC<SettingsProps> = function (props): JSX.Element {
     e: React.SyntheticEvent<HTMLInputElement, KeyboardEvent>
   ): void {
     setElementsNum(+e.currentTarget.value);
-    props.onSubmit(+e.currentTarget.value, iteration);
+    props.onSubmit(+e.currentTarget.value, iteration, true, false);
   };
 
   const iterationHandler = function (
@@ -22,8 +27,13 @@ const Settings: React.FC<SettingsProps> = function (props): JSX.Element {
     setIteration(+e.currentTarget.value);
   };
 
+  const randomizeHandler = function () {
+    props.onSubmit(elementsNum, iteration, true, false);
+  };
+
   const startHandler = function () {
-    startArraySorting(SortType.BUBBLE);
+    props.onSubmit(elementsNum, iteration, false, true);
+    startArraySorting();
   };
 
   return (
@@ -44,14 +54,7 @@ const Settings: React.FC<SettingsProps> = function (props): JSX.Element {
           <label htmlFor="elements-num"></label>
         </div>
         <button onClick={startHandler}>Start</button>
-        <button
-          onClick={() => {
-            randomize(elementsNum);
-            completeArraySorting();
-          }}
-        >
-          Randomize
-        </button>
+        <button onClick={randomizeHandler}>Randomize</button>
         <div className="settings__scroll-iterations">
           Time between each iteration: {iteration}s
           <input

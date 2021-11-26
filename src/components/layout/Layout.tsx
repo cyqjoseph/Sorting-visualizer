@@ -6,11 +6,16 @@ const Layout: React.FC = function (): JSX.Element {
     length: number;
     iteration: number;
     randomize: boolean;
-  }>({ length: 5, iteration: 1, randomize: false });
+    loading: boolean;
+  }>({ length: 5, iteration: 1, randomize: false, loading: false });
 
-  const submitHandler = function (length: number, iteration: number): void {
-    // will trigger sorting logic here
-    setSettings({ length, iteration, randomize: false });
+  const submitHandler = function (
+    length: number,
+    iteration: number,
+    randomize: boolean,
+    loading: boolean
+  ): void {
+    setSettings({ length, iteration, randomize, loading });
   };
   return (
     <div className="layout">

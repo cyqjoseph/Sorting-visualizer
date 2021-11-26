@@ -5,7 +5,6 @@ export interface SortStartAction {
   type: ActionType.SORT_START;
   payload: {
     loading: boolean;
-    sortType: SortType;
   };
 }
 

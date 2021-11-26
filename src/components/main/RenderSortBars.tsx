@@ -5,6 +5,8 @@ import { useTypedSelector } from "../../hooks/use-typed-selector";
 import { SortType } from "../../enums";
 import { useEffect, useState } from "react";
 import { useStore } from "react-redux";
+import { invokeRender } from "../../sorts/Helpers";
+
 interface RenderSortBarProps {
   settings: { length: number; iteration: number; randomize: boolean };
 }
@@ -19,7 +21,9 @@ const RenderSortBars: React.FC<RenderSortBarProps> = function ({ settings }) {
   const loading = useTypedSelector(({ sortArray: { loading } }) => {
     return loading;
   });
-  const { randomize, pendingArraySorting, completeArraySorting } = useActions();
+  const { randomize, completeArraySorting, pendingBubbleSorting } =
+    useActions();
+
   useEffect(() => {
     randomize(settings.length);
     setRenderedBars(sortArray.data);
@@ -28,22 +32,25 @@ const RenderSortBars: React.FC<RenderSortBarProps> = function ({ settings }) {
   useEffect(() => {
     if (loading && !flag) {
       console.log("Starting to sort");
-      pendingArraySorting(SortType.BUBBLE, sortArray.data);
+      pendingBubbleSorting(SortType.BUBBLE, 0, 0);
       setFlag(true);
     }
     if (!loading) {
       setFlag(false);
     }
-    setRenderedBars(sortArray.data);
   }, [
     sortArray.data,
     loading,
     completeArraySorting,
     data,
-    pendingArraySorting,
+    pendingBubbleSorting,
     flag,
   ]);
-  console.log(store.getState());
+
+  useEffect(() => {
+    console.log("invoked");
+    setRenderedBars(invokeRender());
+  }, []);
   return (
     <React.Fragment>
       {renderedBars.map((sortBar: SortBar) => sortBar.renderSortBar())}

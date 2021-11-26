@@ -1,10 +1,12 @@
 import { SortBar } from "../models/SortBar";
+import { store } from "../state";
 
 function getValue(element: SortBar): number {
   return element.height;
 }
 
-function compare(x: SortBar, y: SortBar): boolean {
+// Returns true if value of x is greater/equal than y
+export function compare(x: SortBar, y: SortBar): boolean {
   return getValue(x) >= getValue(y);
 }
 
@@ -28,3 +30,7 @@ export function isSorted(elements: SortBar[]): boolean {
   }
   return true;
 }
+
+export const invokeRender = function () {
+  return store.getState().sortArray.data;
+};

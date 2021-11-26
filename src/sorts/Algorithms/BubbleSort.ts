@@ -1,8 +1,4 @@
 import { SortBar } from "../../models/SortBar";
-// import { sleep } from "../Helpers";
-// import { useDispatch, useStore } from "react-redux";
-// import { ActionType } from "../../state/action-types";
-
 export function BubbleSort(sortArr: SortBar[]): SortBar[] {
   // const dispatch = useDispatch();
   let len: number = sortArr.length;

@@ -1,7 +1,12 @@
 import RenderSortBars from "./RenderSortBars";
-
+import BubbleSort from "../../sorts/Algorithms/BubbleSortBars";
 interface MainContainerProps {
-  settings: { length: number; iteration: number; randomize: boolean };
+  settings: {
+    length: number;
+    iteration: number;
+    randomize: boolean;
+    loading: boolean;
+  };
 }
 
 const MainContainer: React.FC<MainContainerProps> = function (
@@ -10,7 +15,8 @@ const MainContainer: React.FC<MainContainerProps> = function (
   return (
     <section className="mainContainer">
       <div className="mainContainer__items">
-        <RenderSortBars settings={props.settings} />
+        <BubbleSort settings={props.settings} />
+        {/* <RenderSortBars settings={props.settings} /> */}
       </div>
     </section>
   );
