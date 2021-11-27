@@ -6,3 +6,12 @@ export enum SortType {
   QUICK = "QuickSort",
   COUNT = "CountSort",
 }
+
+export interface RenderSortBarProps {
+  settings: {
+    length: number;
+    iteration: number;
+    randomize: boolean;
+    loading: boolean;
+  };
+}

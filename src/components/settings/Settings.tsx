@@ -47,6 +47,9 @@ const Settings: React.FC<SettingsProps> = function (props): JSX.Element {
     setStartDisabled(true);
     setRandomizeDisabled(true); // must disable this as well
   };
+  useEffect(() => {
+    setRandomizeDisabled(true);
+  }, []);
 
   useEffect(() => {
     if (loading) {
@@ -70,6 +73,7 @@ const Settings: React.FC<SettingsProps> = function (props): JSX.Element {
             id="slider"
             value={elementsNum}
             onInput={sliderHandler}
+            disabled={loading}
           />
           <label htmlFor="elements-num"></label>
         </div>
@@ -90,6 +94,7 @@ const Settings: React.FC<SettingsProps> = function (props): JSX.Element {
             id="slider"
             value={iteration}
             onInput={iterationHandler}
+            disabled={loading}
           />
           <label htmlFor="elements-num"></label>
         </div>
