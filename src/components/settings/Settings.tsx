@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useActions } from "../../hooks/use-actions";
-
+import { useTypedSelector } from "../../hooks/use-typed-selector";
 interface SettingsProps {
   onSubmit(
     length: number,
@@ -10,6 +10,10 @@ interface SettingsProps {
   ): void;
 }
 const Settings: React.FC<SettingsProps> = function (props): JSX.Element {
+  const loading = useTypedSelector(({ sortArray: { loading } }) => {
+    return loading;
+  });
+
   const [startDisabled, setStartDisabled] = useState<boolean>(false);
   const [randomizeDisabled, setRandomizeDisabled] = useState<boolean>(true);
   const { startArraySorting, completeArraySorting } = useActions();
@@ -41,8 +45,16 @@ const Settings: React.FC<SettingsProps> = function (props): JSX.Element {
     props.onSubmit(elementsNum, iteration, false, true);
     startArraySorting();
     setStartDisabled(true);
-    setRandomizeDisabled(false);
+    setRandomizeDisabled(true); // must disable this as well
   };
+
+  useEffect(() => {
+    if (loading) {
+      setRandomizeDisabled(true);
+    } else {
+      setRandomizeDisabled(false);
+    }
+  }, [loading]);
 
   return (
     <section className="settings">

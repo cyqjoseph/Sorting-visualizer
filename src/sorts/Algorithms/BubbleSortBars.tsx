@@ -16,7 +16,6 @@ interface RenderSortBarProps {
 }
 const RenderSortBars: React.FC<RenderSortBarProps> = function ({ settings }) {
   const [renderedBars, setRenderedBars] = useState<SortBar[]>([]);
-  const [isRandomize, setIsRandomize] = useState<boolean>(settings.randomize);
   const [flag, setFlag] = useState<boolean>(false);
   const isLoading = useTypedSelector(({ sortArray: { loading } }) => {
     return loading;
@@ -26,7 +25,6 @@ const RenderSortBars: React.FC<RenderSortBarProps> = function ({ settings }) {
   useEffect(() => {
     if (settings.randomize) {
       setRenderedBars(new SortArray(settings.length).randomizeSortArray());
-      setIsRandomize(false);
     }
     setRenderedBars(new SortArray(settings.length).randomizeSortArray());
   }, [settings.randomize, settings.length]);

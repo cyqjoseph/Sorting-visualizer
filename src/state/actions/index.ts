@@ -3,14 +3,14 @@ import { ActionType } from "../action-types";
 export interface SortStartAction {
   type: ActionType.SORT_START;
   payload: {
-    loading: boolean;
+    loading: true;
   };
 }
 
 export interface SortCompleteAction {
   type: ActionType.SORT_COMPLETE;
   payload: {
-    loading: boolean;
+    loading: false;
   };
 }
 export interface RandomizeAction {
