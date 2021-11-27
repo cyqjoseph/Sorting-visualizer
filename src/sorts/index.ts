@@ -1,1 +1,1 @@
-export * from "./Algorithms/BubbleSort";
+export * from "./Algorithms/BubbleSortBars";

@@ -7,7 +7,7 @@ const Layout: React.FC = function (): JSX.Element {
     iteration: number;
     randomize: boolean;
     loading: boolean;
-  }>({ length: 5, iteration: 1, randomize: false, loading: false });
+  }>({ length: 5, iteration: 0.004, randomize: false, loading: false });
 
   const submitHandler = function (
     length: number,

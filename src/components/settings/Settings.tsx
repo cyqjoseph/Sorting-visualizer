@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { SortType } from "../../enums";
 import { useActions } from "../../hooks/use-actions";
 
 interface SettingsProps {
@@ -11,14 +10,18 @@ interface SettingsProps {
   ): void;
 }
 const Settings: React.FC<SettingsProps> = function (props): JSX.Element {
-  const { randomize, startArraySorting, completeArraySorting } = useActions();
+  const [startDisabled, setStartDisabled] = useState<boolean>(false);
+  const [randomizeDisabled, setRandomizeDisabled] = useState<boolean>(true);
+  const { startArraySorting, completeArraySorting } = useActions();
   const [elementsNum, setElementsNum] = useState<number>(5);
-  const [iteration, setIteration] = useState<number>(1);
+  const [iteration, setIteration] = useState<number>(0.004);
   const sliderHandler = function (
     e: React.SyntheticEvent<HTMLInputElement, KeyboardEvent>
   ): void {
     setElementsNum(+e.currentTarget.value);
     props.onSubmit(+e.currentTarget.value, iteration, true, false);
+    setStartDisabled(false);
+    setRandomizeDisabled(true);
   };
 
   const iterationHandler = function (
@@ -29,11 +32,16 @@ const Settings: React.FC<SettingsProps> = function (props): JSX.Element {
 
   const randomizeHandler = function () {
     props.onSubmit(elementsNum, iteration, true, false);
+    completeArraySorting();
+    setRandomizeDisabled(true);
+    setStartDisabled(false);
   };
 
   const startHandler = function () {
     props.onSubmit(elementsNum, iteration, false, true);
     startArraySorting();
+    setStartDisabled(true);
+    setRandomizeDisabled(false);
   };
 
   return (
@@ -53,15 +61,19 @@ const Settings: React.FC<SettingsProps> = function (props): JSX.Element {
           />
           <label htmlFor="elements-num"></label>
         </div>
-        <button onClick={startHandler}>Start</button>
-        <button onClick={randomizeHandler}>Randomize</button>
+        <button onClick={startHandler} disabled={startDisabled}>
+          Start
+        </button>
+        <button onClick={randomizeHandler} disabled={randomizeDisabled}>
+          Randomize
+        </button>
         <div className="settings__scroll-iterations">
           Time between each iteration: {iteration}s
           <input
             type="range"
-            min="0.1"
-            max="2"
-            step="0.1"
+            min="0.004"
+            max="1"
+            step="0.001"
             name="elements-num"
             id="slider"
             value={iteration}

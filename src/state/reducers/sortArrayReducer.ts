@@ -3,7 +3,7 @@ import { ActionType } from "../action-types";
 import { SortArray } from "../../models/SortArray";
 import { SortBar } from "../../models/SortBar";
 import { SortType } from "../../enums";
-import produce from "immer";
+// import produce from "immer";
 
 interface SortArrayState {
   loading: boolean;
@@ -32,19 +32,6 @@ const reducer = function (
       return {
         ...state,
         loading: action.payload.loading,
-      };
-    case ActionType.SORT_PENDING:
-      const { data, sortType } = action.payload;
-      console.log("Pending in reducer");
-      console.log(data, sortType);
-      return { ...state, data, sortType };
-
-    case ActionType.SORT_RENDER:
-      console.log("Rendering in reducer");
-      return {
-        ...state,
-        sortType: action.payload.sortType,
-        data: action.payload.data,
       };
     case ActionType.SORT_COMPLETE:
       return { ...state, loading: action.payload.loading };

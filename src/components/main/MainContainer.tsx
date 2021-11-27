@@ -1,4 +1,4 @@
-import RenderSortBars from "./RenderSortBars";
+import { Routes, Route } from "react-router-dom";
 import BubbleSort from "../../sorts/Algorithms/BubbleSortBars";
 interface MainContainerProps {
   settings: {
@@ -15,8 +15,16 @@ const MainContainer: React.FC<MainContainerProps> = function (
   return (
     <section className="mainContainer">
       <div className="mainContainer__items">
-        <BubbleSort settings={props.settings} />
-        {/* <RenderSortBars settings={props.settings} /> */}
+        <Routes>
+          <Route
+            path="/"
+            element={<BubbleSort settings={props.settings} />}
+          ></Route>
+          <Route
+            path="/bubble"
+            element={<BubbleSort settings={props.settings} />}
+          ></Route>
+        </Routes>
       </div>
     </section>
   );

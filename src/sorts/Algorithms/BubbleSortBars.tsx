@@ -4,6 +4,8 @@ import { useEffect, useState, useCallback } from "react";
 import { isSorted, compare } from "../Helpers";
 import { SortArray } from "../../models/SortArray";
 import { useTypedSelector } from "../../hooks/use-typed-selector";
+import { useActions } from "../../hooks/use-actions";
+
 interface RenderSortBarProps {
   settings: {
     length: number;
@@ -19,61 +21,62 @@ const RenderSortBars: React.FC<RenderSortBarProps> = function ({ settings }) {
   const isLoading = useTypedSelector(({ sortArray: { loading } }) => {
     return loading;
   });
+  const { completeArraySorting } = useActions();
+
   useEffect(() => {
-    if (isRandomize) {
+    if (settings.randomize) {
       setRenderedBars(new SortArray(settings.length).randomizeSortArray());
       setIsRandomize(false);
     }
     setRenderedBars(new SortArray(settings.length).randomizeSortArray());
-  }, [isRandomize, settings.length]);
+  }, [settings.randomize, settings.length]);
 
-  const BeginBubbleSort = useCallback(async function (sortBars: SortBar[]) {
-    const len = sortBars.length;
+  const BeginBubbleSort = useCallback(
+    async function (sortBars: SortBar[], iteration: number) {
+      const len = sortBars.length;
+      let firstRenderFlag = false;
+      let iFlag = 0;
+      let jFlag = 0;
+      while (iFlag <= len - 1) {
+        if (isSorted(sortBars)) {
+          break;
+        }
+        if (firstRenderFlag) {
+        }
+        if (jFlag >= len - iFlag - 1) {
+          // Exit out of nested loop
+          sortBars[len - 1 - iFlag].color = "#58ff58";
+          firstRenderFlag = true;
 
-    let iFlag = 0;
-    let jFlag = 0;
-    while (iFlag <= len - 1) {
-      if (isSorted(sortBars)) {
-        break;
+          jFlag = 0;
+          iFlag += 1;
+        }
+        if (compare(sortBars[jFlag], sortBars[jFlag + 1])) {
+          // Swapping logic for bubble sort
+          let temp: SortBar = sortBars[jFlag];
+          sortBars[jFlag] = sortBars[jFlag + 1];
+          sortBars[jFlag + 1] = temp;
+          await new Promise((resolve) => {
+            setTimeout(resolve, iteration * 1000);
+            setRenderedBars(sortBars);
+            setFlag((prevState) => !prevState);
+          });
+        }
+
+        jFlag += 1;
       }
-      if (jFlag >= len - iFlag - 1) {
-        // Exit out of nested loop
-        jFlag = 0;
-        iFlag += 1;
-      }
-      if (compare(sortBars[jFlag], sortBars[jFlag + 1])) {
-        // Swapping logic for bubble sort
-        let temp: SortBar = sortBars[jFlag];
-        sortBars[jFlag] = sortBars[jFlag + 1];
-        sortBars[jFlag + 1] = temp;
-        await new Promise((resolve) => {
-          setTimeout(resolve, 1);
-          setRenderedBars(sortBars);
-          setFlag((prevState) => !prevState);
-          // console.log("re-sorting...", sortBars);
-        });
-      }
-      jFlag += 1;
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+      sortBars.forEach((sortBar) => (sortBar.color = "#58ff58"));
+      setRenderedBars(sortBars);
+      completeArraySorting();
+    },
+    [completeArraySorting]
+  );
 
   useEffect(() => {
     if (isLoading) {
-      BeginBubbleSort(renderedBars);
+      BeginBubbleSort(renderedBars, settings.iteration);
     }
-  }, [isLoading, BeginBubbleSort, renderedBars]);
-
-  useEffect(() => {}, [renderedBars]);
-  // useEffect(() => {
-  //   if (isLoading) {
-  //     console.log("inside timer");
-  //     let timer = setTimeout(() => setRenderedBars(renderedBars), 1500);
-  //     return () => {
-  //       clearTimeout(timer);
-  //     };
-  //   }
-  // }, [renderedBars, isLoading]);
+  }, [isLoading, BeginBubbleSort, renderedBars, settings.iteration]);
 
   return (
     <React.Fragment>
