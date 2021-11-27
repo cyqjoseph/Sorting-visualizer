@@ -7,7 +7,7 @@ import { useTypedSelector } from "../../hooks/use-typed-selector";
 import { useActions } from "../../hooks/use-actions";
 import { RenderSortBarProps } from "../../enums";
 
-const InsertionSort: React.FC<RenderSortBarProps> = function ({ settings }) {
+const SelectionSort: React.FC<RenderSortBarProps> = function ({ settings }) {
   const [renderedBars, setRenderedBars] = useState<SortBar[]>([]);
   const [flag, setFlag] = useState<boolean>(false);
   const isLoading = useTypedSelector(({ sortArray: { loading } }) => {
@@ -22,35 +22,36 @@ const InsertionSort: React.FC<RenderSortBarProps> = function ({ settings }) {
     setRenderedBars(new SortArray(settings.length).randomizeSortArray());
   }, [settings.randomize, settings.length]);
 
-  const BeginInsertionSort = useCallback(
+  const BeginSelectionSort = useCallback(
     async function (sortBars: SortBar[], iteration: number) {
       const len = sortBars.length;
-      let i = 1;
-      let j: number;
-      let key: SortBar;
-      while (i <= len - 1) {
+      let i = 0;
+      let j: number; // will traverse array as pointer to find smallest element
+      let minIndex: number;
+      while (i < len) {
         if (isSorted(sortBars)) {
           break;
         }
-        key = sortBars[i];
-        j = i - 1;
-        key.color = "#4765fc";
+        // point on last element
+        minIndex = i;
 
-        while (j >= 0 && compare(sortBars[j], key)) {
-          // build sorted list at the start, moves smaller element to start of the list
-          let temp: SortBar = sortBars[j];
-          sortBars[j] = sortBars[j + 1];
-          sortBars[j + 1] = temp;
-          j--;
-          // moving smaller element one at a time
-          await new Promise((resolve) => {
-            setTimeout(resolve, iteration * 1000);
-            setFlag((prevState) => !prevState);
-            setRenderedBars(sortBars);
-          });
+        for (j = i + 1; j < len; j++) {
+          if (compare(sortBars[minIndex], sortBars[j])) {
+            minIndex = j;
+          }
+        } // put smallest element selected at correct index
+        if (i !== minIndex) {
+          let temp: SortBar = sortBars[i];
+          sortBars[i] = sortBars[minIndex];
+          sortBars[minIndex] = temp;
         }
-        sortBars[j + 1] = key;
-        key.color = "#e66465";
+        await new Promise((resolve) => {
+          setTimeout(resolve, iteration * 1000);
+          setFlag((prevState) => !prevState);
+          setRenderedBars(sortBars);
+        });
+
+        sortBars[i].color = "#58ff58";
         i += 1;
       }
       sortBars.forEach((sortBar) => (sortBar.color = "#58ff58"));
@@ -62,9 +63,9 @@ const InsertionSort: React.FC<RenderSortBarProps> = function ({ settings }) {
 
   useEffect(() => {
     if (isLoading) {
-      BeginInsertionSort(renderedBars, settings.iteration);
+      BeginSelectionSort(renderedBars, settings.iteration);
     }
-  }, [isLoading, BeginInsertionSort, renderedBars, settings.iteration]);
+  }, [isLoading, BeginSelectionSort, renderedBars, settings.iteration]);
 
   return (
     <React.Fragment>
@@ -74,4 +75,6 @@ const InsertionSort: React.FC<RenderSortBarProps> = function ({ settings }) {
   );
 };
 
-export default InsertionSort;
+export default SelectionSort;
+
+// not adaptive and not stable (will not preserve the order)

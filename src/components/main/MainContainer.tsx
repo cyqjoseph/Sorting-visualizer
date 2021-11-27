@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import BubbleSort from "../../sorts/Algorithms/BubbleSort";
 import InsertionSort from "../../sorts/Algorithms/InsertionSort";
-
+import SelectionSort from "../../sorts/Algorithms/SelectionSort";
 interface MainContainerProps {
   settings: {
     length: number;
@@ -27,8 +27,12 @@ const MainContainer: React.FC<MainContainerProps> = function (
             element={<BubbleSort settings={props.settings} />}
           ></Route>
           <Route
-            path="/Insertion"
+            path="/insertion"
             element={<InsertionSort settings={props.settings} />}
+          ></Route>
+          <Route
+            path="/selection"
+            element={<SelectionSort settings={props.settings} />}
           ></Route>
         </Routes>
       </div>
