@@ -88,7 +88,7 @@ const Settings: React.FC<SettingsProps> = function (props): JSX.Element {
           <input
             type="range"
             min="0.004"
-            max="1"
+            max="0.02"
             step="0.001"
             name="elements-num"
             id="slider"

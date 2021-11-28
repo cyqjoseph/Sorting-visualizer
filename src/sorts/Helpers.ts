@@ -1,8 +1,16 @@
 import { SortBar } from "../models/SortBar";
 import { store } from "../state";
 
-function getValue(element: SortBar): number {
+export function getValue(element: SortBar): number {
   return element.height;
+}
+
+export function getQuickSortValue(element: SortBar | undefined): number {
+  if (element) {
+    return element.height;
+  } else {
+    return 502;
+  }
 }
 
 // Returns true if value of x is greater/equal than y

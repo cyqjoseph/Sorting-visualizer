@@ -1,7 +1,7 @@
 import React from "react";
 import { SortBar } from "../../models/SortBar";
 import { useEffect, useState, useCallback } from "react";
-import { isSorted, sleep } from "../Helpers";
+import { isSorted } from "../Helpers";
 import { SortArray } from "../../models/SortArray";
 import { useTypedSelector } from "../../hooks/use-typed-selector";
 import { useActions } from "../../hooks/use-actions";

@@ -3,6 +3,7 @@ import BubbleSort from "../../sorts/Algorithms/BubbleSort";
 import InsertionSort from "../../sorts/Algorithms/InsertionSort";
 import SelectionSort from "../../sorts/Algorithms/SelectionSort";
 import BogoSort from "../../sorts/Algorithms/BogoSort";
+import QuickSort from "../../sorts/Algorithms/QuickSort";
 interface MainContainerProps {
   settings: {
     length: number;
@@ -38,6 +39,10 @@ const MainContainer: React.FC<MainContainerProps> = function (
           <Route
             path="/bogo"
             element={<BogoSort settings={props.settings} />}
+          ></Route>
+          <Route
+            path="/quick"
+            element={<QuickSort settings={props.settings} />}
           ></Route>
         </Routes>
       </div>
