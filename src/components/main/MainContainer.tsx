@@ -4,6 +4,7 @@ import InsertionSort from "../../sorts/Algorithms/InsertionSort";
 import SelectionSort from "../../sorts/Algorithms/SelectionSort";
 import BogoSort from "../../sorts/Algorithms/BogoSort";
 import QuickSort from "../../sorts/Algorithms/QuickSort";
+import MergeSort from "../../sorts/Algorithms/MergeSort";
 interface MainContainerProps {
   settings: {
     length: number;
@@ -43,6 +44,10 @@ const MainContainer: React.FC<MainContainerProps> = function (
           <Route
             path="/quick"
             element={<QuickSort settings={props.settings} />}
+          ></Route>
+          <Route
+            path="/merge"
+            element={<MergeSort settings={props.settings} />}
           ></Route>
         </Routes>
       </div>

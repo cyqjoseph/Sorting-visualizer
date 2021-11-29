@@ -82,8 +82,8 @@ const QuickSort: React.FC<RenderSortBarProps> = function ({ settings }) {
         setRenderedBars(sortBars);
       });
       // Call recursively on both sides
-      BeginQuickSort(sortBars, rStart, start - 1, iteration);
-      BeginQuickSort(sortBars, start, rEnd, iteration);
+      await BeginQuickSort(sortBars, rStart, start - 1, iteration);
+      await BeginQuickSort(sortBars, start, rEnd, iteration);
       if (isSorted(sortBars)) {
         sortBars.forEach((sortBar) => (sortBar.color = "#58ff58"));
         setRenderedBars(sortBars);
