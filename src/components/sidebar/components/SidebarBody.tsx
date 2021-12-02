@@ -6,14 +6,14 @@ import {
   GiMonkey,
 } from "react-icons/gi";
 import { HiArrowSmDown } from "react-icons/hi";
-import { BiSelectMultiple, BiRun, BiGitMerge } from "react-icons/bi";
+import { BiSelectMultiple, BiRun, BiGitMerge, BiShuffle } from "react-icons/bi";
 import { CgBoy } from "react-icons/cg";
 import { Link } from "react-router-dom";
 const SidebarBody: React.FC = function (): JSX.Element {
   return (
     <SidebarContent>
       <Menu iconShape="square">
-        <SubMenu title="Quadratic">
+        <SubMenu title="O(n²)">
           <MenuItem icon={<GiBubbles />}>
             Bubble Sort
             <Link to="/bubble" />
@@ -31,7 +31,7 @@ const SidebarBody: React.FC = function (): JSX.Element {
             <Link to="/bucket" />
           </MenuItem>
         </SubMenu>
-        <SubMenu title="Logarithmic">
+        <SubMenu title="O(nlog(n))">
           <MenuItem icon={<BiRun />}>
             Quick Sort
             <Link to="/quick" />
@@ -47,6 +47,12 @@ const SidebarBody: React.FC = function (): JSX.Element {
           <MenuItem icon={<CgBoy />}>
             Tim Sort
             <Link to="/tim" />
+          </MenuItem>
+        </SubMenu>
+        <SubMenu title="O(nk)">
+          <MenuItem icon={<BiShuffle />}>
+            Radix Sort
+            <Link to="/radix" />
           </MenuItem>
         </SubMenu>
         <SubMenu title="Bruh">

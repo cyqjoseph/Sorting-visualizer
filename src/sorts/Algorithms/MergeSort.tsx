@@ -20,6 +20,7 @@ const MergeSort: React.FC<RenderSortBarProps> = function ({ settings }) {
   useEffect(() => {
     if (settings.randomize) {
       setRenderedBars(new SortArray(settings.length).randomizeSortArray());
+      setLoadingFlag(false);
     }
     setRenderedBars(new SortArray(settings.length).randomizeSortArray());
   }, [settings.randomize, settings.length]);
@@ -41,10 +42,6 @@ const MergeSort: React.FC<RenderSortBarProps> = function ({ settings }) {
           high = i + p - 1; // 3 in first iteration
           mid = Math.floor((firstPointer + high) / 2); // 1 in first ieration
           secondPointer = mid + 1; // 2 in first iteration
-          // console.log("p:", p, "i:", i);
-          // console.log(
-          //   `Firstpointer: ${firstPointer} Mid: ${mid}, Secondpointer: ${secondPointer} High: ${high}`
-          // );
 
           if (high + p > sortBars.length) {
             high = sortBars.length - 1;
@@ -79,7 +76,6 @@ const MergeSort: React.FC<RenderSortBarProps> = function ({ settings }) {
             }
           }
 
-          console.log(tempArr);
           const frontArr = storeArr.slice(0, i);
           const backArr = storeArr.slice(high + 1, storeArr.length);
           storeArr = [...frontArr, ...tempArr, ...backArr];
@@ -98,6 +94,7 @@ const MergeSort: React.FC<RenderSortBarProps> = function ({ settings }) {
         storeArr.forEach((sortBar) => (sortBar.color = "#58ff58"));
         setRenderedBars(storeArr);
         completeArraySorting();
+        setLoadingFlag(false);
         return;
       }
     },
