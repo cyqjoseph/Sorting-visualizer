@@ -6,6 +6,7 @@ import BogoSort from "../../sorts/Algorithms/BogoSort";
 import QuickSort from "../../sorts/Algorithms/QuickSort";
 import MergeSort from "../../sorts/Algorithms/MergeSort";
 import RadixSort from "../../sorts/Algorithms/RadixSort";
+import ShellSort from "../../sorts/Algorithms/ShellSort";
 interface MainContainerProps {
   settings: {
     length: number;
@@ -53,6 +54,10 @@ const MainContainer: React.FC<MainContainerProps> = function (
           <Route
             path="/radix"
             element={<RadixSort settings={props.settings} />}
+          ></Route>
+          <Route
+            path="/shell"
+            element={<ShellSort settings={props.settings} />}
           ></Route>
         </Routes>
       </div>

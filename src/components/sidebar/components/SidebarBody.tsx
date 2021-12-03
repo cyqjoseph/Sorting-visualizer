@@ -4,6 +4,7 @@ import {
   GiEmptyMetalBucketHandle,
   GiBookPile,
   GiMonkey,
+  GiBackboneShell,
 } from "react-icons/gi";
 import { HiArrowSmDown } from "react-icons/hi";
 import { BiSelectMultiple, BiRun, BiGitMerge, BiShuffle } from "react-icons/bi";
@@ -40,9 +41,9 @@ const SidebarBody: React.FC = function (): JSX.Element {
             Merge Sort
             <Link to="/merge" />
           </MenuItem>
-          <MenuItem icon={<GiBookPile />}>
-            Heap Sort
-            <Link to="/heap" />
+          <MenuItem icon={<GiBackboneShell />}>
+            Shell Sort
+            <Link to="/shell" />
           </MenuItem>
           <MenuItem icon={<CgBoy />}>
             Tim Sort
