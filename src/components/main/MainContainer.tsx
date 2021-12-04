@@ -7,6 +7,7 @@ import QuickSort from "../../sorts/Algorithms/QuickSort";
 import MergeSort from "../../sorts/Algorithms/MergeSort";
 import RadixSort from "../../sorts/Algorithms/RadixSort";
 import ShellSort from "../../sorts/Algorithms/ShellSort";
+import HeapSort from "../../sorts/Algorithms/HeapSort";
 interface MainContainerProps {
   settings: {
     length: number;
@@ -58,6 +59,10 @@ const MainContainer: React.FC<MainContainerProps> = function (
           <Route
             path="/shell"
             element={<ShellSort settings={props.settings} />}
+          ></Route>
+          <Route
+            path="/heap"
+            element={<HeapSort settings={props.settings} />}
           ></Route>
         </Routes>
       </div>

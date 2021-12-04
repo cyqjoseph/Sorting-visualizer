@@ -8,7 +8,7 @@ import {
 } from "react-icons/gi";
 import { HiArrowSmDown } from "react-icons/hi";
 import { BiSelectMultiple, BiRun, BiGitMerge, BiShuffle } from "react-icons/bi";
-import { CgBoy } from "react-icons/cg";
+//import { CgBoy } from "react-icons/cg";
 import { Link } from "react-router-dom";
 const SidebarBody: React.FC = function (): JSX.Element {
   return (
@@ -45,10 +45,14 @@ const SidebarBody: React.FC = function (): JSX.Element {
             Shell Sort
             <Link to="/shell" />
           </MenuItem>
-          <MenuItem icon={<CgBoy />}>
+          <MenuItem icon={<GiBookPile />}>
+            Heap Sort
+            <Link to="/heap" />
+          </MenuItem>
+          {/* <MenuItem icon={<CgBoy />}>
             Tim Sort
             <Link to="/tim" />
-          </MenuItem>
+          </MenuItem> */}
         </SubMenu>
         <SubMenu title="O(nk)">
           <MenuItem icon={<BiShuffle />}>
