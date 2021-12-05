@@ -8,7 +8,13 @@ import {
   GiBadGnome,
 } from "react-icons/gi";
 import { HiArrowSmDown } from "react-icons/hi";
-import { BiSelectMultiple, BiRun, BiGitMerge, BiShuffle } from "react-icons/bi";
+import {
+  BiSelectMultiple,
+  BiRun,
+  BiGitMerge,
+  BiShuffle,
+  BiCode,
+} from "react-icons/bi";
 //import { CgBoy } from "react-icons/cg";
 import { Link } from "react-router-dom";
 const SidebarBody: React.FC = function (): JSX.Element {
@@ -31,6 +37,10 @@ const SidebarBody: React.FC = function (): JSX.Element {
           <MenuItem icon={<GiBadGnome />}>
             Gnome Sort
             <Link to="/gnome" />
+          </MenuItem>
+          <MenuItem icon={<BiCode />}>
+            Odd-Even Sort
+            <Link to="/odd-even" />
           </MenuItem>
           <MenuItem icon={<GiEmptyMetalBucketHandle />}>
             Bucket Sort

@@ -9,6 +9,7 @@ import RadixSort from "../../sorts/Algorithms/RadixSort";
 import ShellSort from "../../sorts/Algorithms/ShellSort";
 import HeapSort from "../../sorts/Algorithms/HeapSort";
 import GnomeSort from "../../sorts/Algorithms/GnomeSort";
+import OddEvenSort from "../../sorts/Algorithms/OddEvenSort";
 interface MainContainerProps {
   settings: {
     length: number;
@@ -68,6 +69,10 @@ const MainContainer: React.FC<MainContainerProps> = function (
           <Route
             path="/gnome"
             element={<GnomeSort settings={props.settings} />}
+          ></Route>
+          <Route
+            path="/odd-even"
+            element={<OddEvenSort settings={props.settings} />}
           ></Route>
         </Routes>
       </div>
