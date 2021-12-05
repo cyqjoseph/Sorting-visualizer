@@ -5,6 +5,7 @@ import {
   GiBookPile,
   GiMonkey,
   GiBackboneShell,
+  GiBadGnome,
 } from "react-icons/gi";
 import { HiArrowSmDown } from "react-icons/hi";
 import { BiSelectMultiple, BiRun, BiGitMerge, BiShuffle } from "react-icons/bi";
@@ -26,6 +27,10 @@ const SidebarBody: React.FC = function (): JSX.Element {
           <MenuItem icon={<BiSelectMultiple />}>
             Selection Sort
             <Link to="/selection" />
+          </MenuItem>
+          <MenuItem icon={<GiBadGnome />}>
+            Gnome Sort
+            <Link to="/gnome" />
           </MenuItem>
           <MenuItem icon={<GiEmptyMetalBucketHandle />}>
             Bucket Sort
