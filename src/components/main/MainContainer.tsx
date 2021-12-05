@@ -10,6 +10,7 @@ import ShellSort from "../../sorts/Algorithms/ShellSort";
 import HeapSort from "../../sorts/Algorithms/HeapSort";
 import GnomeSort from "../../sorts/Algorithms/GnomeSort";
 import OddEvenSort from "../../sorts/Algorithms/OddEvenSort";
+import TimSort from "../../sorts/Algorithms/TimSort";
 interface MainContainerProps {
   settings: {
     length: number;
@@ -73,6 +74,10 @@ const MainContainer: React.FC<MainContainerProps> = function (
           <Route
             path="/odd-even"
             element={<OddEvenSort settings={props.settings} />}
+          ></Route>
+          <Route
+            path="/tim"
+            element={<TimSort settings={props.settings} />}
           ></Route>
         </Routes>
       </div>

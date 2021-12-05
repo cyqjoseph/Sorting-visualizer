@@ -15,7 +15,7 @@ import {
   BiShuffle,
   BiCode,
 } from "react-icons/bi";
-//import { CgBoy } from "react-icons/cg";
+import { CgBoy } from "react-icons/cg";
 import { Link } from "react-router-dom";
 const SidebarBody: React.FC = function (): JSX.Element {
   return (
@@ -64,10 +64,10 @@ const SidebarBody: React.FC = function (): JSX.Element {
             Heap Sort
             <Link to="/heap" />
           </MenuItem>
-          {/* <MenuItem icon={<CgBoy />}>
+          <MenuItem icon={<CgBoy />}>
             Tim Sort
             <Link to="/tim" />
-          </MenuItem> */}
+          </MenuItem>
         </SubMenu>
         <SubMenu title="O(nk)">
           <MenuItem icon={<BiShuffle />}>

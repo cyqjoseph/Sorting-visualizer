@@ -42,3 +42,14 @@ export function isSorted(elements: SortBar[]): boolean {
 export const invokeRender = function () {
   return store.getState().sortArray.data;
 };
+
+export const minRunLength = function (n: number): number {
+  let MIN_MERGE = 32;
+  // Becomes 1 if any 1 bits are shifted off
+  let r = 0;
+  while (n >= MIN_MERGE) {
+    r |= n & 1;
+    n >>= 1;
+  }
+  return n + r;
+};
