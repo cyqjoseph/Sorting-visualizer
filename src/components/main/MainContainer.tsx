@@ -11,6 +11,8 @@ import HeapSort from "../../sorts/Algorithms/HeapSort";
 import GnomeSort from "../../sorts/Algorithms/GnomeSort";
 import OddEvenSort from "../../sorts/Algorithms/OddEvenSort";
 import TimSort from "../../sorts/Algorithms/TimSort";
+import PancakeSort from "../../sorts/Algorithms/PancakeSort";
+
 interface MainContainerProps {
   settings: {
     length: number;
@@ -78,6 +80,10 @@ const MainContainer: React.FC<MainContainerProps> = function (
           <Route
             path="/tim"
             element={<TimSort settings={props.settings} />}
+          ></Route>
+          <Route
+            path="/pancake"
+            element={<PancakeSort settings={props.settings} />}
           ></Route>
         </Routes>
       </div>

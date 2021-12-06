@@ -1,7 +1,6 @@
 import { Menu, MenuItem, SubMenu, SidebarContent } from "react-pro-sidebar";
 import {
   GiBubbles,
-  GiEmptyMetalBucketHandle,
   GiBookPile,
   GiMonkey,
   GiBackboneShell,
@@ -15,7 +14,7 @@ import {
   BiShuffle,
   BiCode,
 } from "react-icons/bi";
-import { CgBoy } from "react-icons/cg";
+import { CgBoy, CgMenuCake } from "react-icons/cg";
 import { Link } from "react-router-dom";
 const SidebarBody: React.FC = function (): JSX.Element {
   return (
@@ -42,9 +41,9 @@ const SidebarBody: React.FC = function (): JSX.Element {
             Odd-Even Sort
             <Link to="/odd-even" />
           </MenuItem>
-          <MenuItem icon={<GiEmptyMetalBucketHandle />}>
-            Bucket Sort
-            <Link to="/bucket" />
+          <MenuItem icon={<CgMenuCake />}>
+            Pancake Sort
+            <Link to="/pancake" />
           </MenuItem>
         </SubMenu>
         <SubMenu title="O(nlog(n))">
@@ -75,7 +74,7 @@ const SidebarBody: React.FC = function (): JSX.Element {
             <Link to="/radix" />
           </MenuItem>
         </SubMenu>
-        <SubMenu title="Bruh">
+        <SubMenu title="Bogo">
           <MenuItem icon={<GiMonkey />}>
             Bogo Sort
             <Link to="/bogo" />
