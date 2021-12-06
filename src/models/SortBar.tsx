@@ -33,5 +33,3 @@ export class SortBar {
     );
   }
 }
-// rgb(88, 255, 88)
-// "linear-gradient(180deg, #e66465 5%, ##58ff58 100%)"

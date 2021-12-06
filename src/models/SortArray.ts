@@ -37,8 +37,4 @@ export class SortArray {
     this.shuffleArray(this.initializeSortArray());
     return this.sortArray;
   }
-
-  // public async sort(): Promise<SortBar[]> {
-  //   return await BubbleSort(this.sortArray);
-  // }
 }
