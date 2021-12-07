@@ -15,7 +15,7 @@ import {
   BiCode,
 } from "react-icons/bi";
 import { CgBoy, CgMenuCake } from "react-icons/cg";
-import { FaCocktail } from "react-icons/fa";
+import { FaCocktail, FaBicycle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 const SidebarBody: React.FC = function (): JSX.Element {
   return (
@@ -49,6 +49,10 @@ const SidebarBody: React.FC = function (): JSX.Element {
           <MenuItem icon={<FaCocktail />}>
             Cocktail Sort
             <Link to="/cocktail" />
+          </MenuItem>
+          <MenuItem icon={<FaBicycle />}>
+            Cycle Sort
+            <Link to="/cycle" />
           </MenuItem>
         </SubMenu>
         <SubMenu title="O(nlog(n))">

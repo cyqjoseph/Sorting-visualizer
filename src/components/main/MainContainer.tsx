@@ -13,6 +13,7 @@ import OddEvenSort from "../../sorts/Algorithms/OddEvenSort";
 import TimSort from "../../sorts/Algorithms/TimSort";
 import PancakeSort from "../../sorts/Algorithms/PancakeSort";
 import CocktailSort from "../../sorts/Algorithms/CocktailSort";
+import CycleSort from "../../sorts/Algorithms/CycleSort";
 
 interface MainContainerProps {
   settings: {
@@ -89,6 +90,10 @@ const MainContainer: React.FC<MainContainerProps> = function (
           <Route
             path="/cocktail"
             element={<CocktailSort settings={props.settings} />}
+          ></Route>
+          <Route
+            path="/cycle"
+            element={<CycleSort settings={props.settings} />}
           ></Route>
         </Routes>
       </div>

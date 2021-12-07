@@ -59,6 +59,20 @@ const CocktailSort: React.FC<RenderSortBarProps> = function ({ settings }) {
           }
         }
       }
+      // if (len > 20) {
+      //   for (let i = 0; i < len - 10; i++) {
+      //     let tempArr = sortBars.slice(i, i + 10);
+      //     let frontArr = sortBars.slice(0, i);
+      //     let backArr = sortBars.slice(i + 10, len - 1);
+      //     tempArr.forEach((sortBar) => (sortBar.color = "#58ff58"));
+      //     await new Promise((resolve) => {
+      //       setTimeout(resolve, iteration * 10000);
+      //       setRenderedBars([...frontArr, ...tempArr, ...backArr]);
+      //       setFlag((prevState) => !prevState);
+      //     });
+      //   }
+      // }
+
       sortBars.forEach((sortBar) => (sortBar.color = "#58ff58"));
       setRenderedBars(sortBars);
       completeArraySorting();
