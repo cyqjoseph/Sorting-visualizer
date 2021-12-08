@@ -25,8 +25,8 @@ export class SortBar {
           overflow: "hidden",
           background: `${
             this._color
-              ? `linear-gradient(180deg, ${this._color} 55%, #b4baff 100%)`
-              : "linear-gradient(180deg, #e66465 5%, #b4baff 100%)"
+              ? `linear-gradient(180deg, ${this._color} 55%, #ffe9e8 100%)`
+              : "linear-gradient(180deg, #e66465 5%, #ffe9e8 100%)"
           }`,
         }}
       ></div>
