@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useActions } from "../../hooks/use-actions";
 import { useTypedSelector } from "../../hooks/use-typed-selector";
+import { Button } from "react-bootstrap";
+import { VscDebugStart } from "react-icons/vsc";
+import { FaRandom } from "react-icons/fa";
+import "react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css";
+import RangeSlider from "react-bootstrap-range-slider";
 interface SettingsProps {
   onSubmit(
     length: number,
@@ -17,7 +22,7 @@ const Settings: React.FC<SettingsProps> = function (props): JSX.Element {
   const [startDisabled, setStartDisabled] = useState<boolean>(false);
   const [randomizeDisabled, setRandomizeDisabled] = useState<boolean>(true);
   const { startArraySorting, completeArraySorting } = useActions();
-  const [elementsNum, setElementsNum] = useState<number>(5);
+  const [elementsNum, setElementsNum] = useState<number>(50);
   const [iteration, setIteration] = useState<number>(0.004);
   const sliderHandler = function (
     e: React.SyntheticEvent<HTMLInputElement, KeyboardEvent>
@@ -45,7 +50,7 @@ const Settings: React.FC<SettingsProps> = function (props): JSX.Element {
     props.onSubmit(elementsNum, iteration, false, true);
     startArraySorting();
     setStartDisabled(true);
-    setRandomizeDisabled(true); // must disable this as well
+    setRandomizeDisabled(true);
   };
   useEffect(() => {
     setRandomizeDisabled(true);
@@ -63,40 +68,46 @@ const Settings: React.FC<SettingsProps> = function (props): JSX.Element {
     <section className="settings">
       <div className="settings__scroll">
         <div className="settings__scroll-elements">
-          Number of Elements: {elementsNum}
-          <input
-            type="range"
-            min="5"
-            max="500"
-            step="5"
-            name="elements-num"
+          <span className="textSpan">Number of Elements</span>
+          <RangeSlider
+            min={5}
+            max={500}
+            step={5}
             id="slider"
             value={elementsNum}
             onInput={sliderHandler}
             disabled={loading}
           />
-          <label htmlFor="elements-num"></label>
         </div>
-        <button onClick={startHandler} disabled={startDisabled}>
-          Start
-        </button>
-        <button onClick={randomizeHandler} disabled={randomizeDisabled}>
-          Randomize
-        </button>
+        <Button
+          variant="success"
+          onClick={startHandler}
+          disabled={startDisabled}
+          size="lg"
+          className="button"
+        >
+          <VscDebugStart />
+        </Button>
+        <Button
+          variant="warning"
+          onClick={randomizeHandler}
+          disabled={randomizeDisabled}
+          size="lg"
+          className="button"
+        >
+          <FaRandom />
+        </Button>
         <div className="settings__scroll-iterations">
-          Time between each iteration: {iteration}s
-          <input
-            type="range"
-            min="0.004"
-            max="1"
-            step="0.001"
-            name="elements-num"
+          <span className="textSpan">Time between Iterations</span>
+          <RangeSlider
+            min={0.004}
+            max={1}
+            step={0.001}
             id="slider"
             value={iteration}
             onInput={iterationHandler}
             disabled={loading}
           />
-          <label htmlFor="elements-num"></label>
         </div>
       </div>
     </section>

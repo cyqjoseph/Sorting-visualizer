@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import BubbleSort from "../../sorts/Algorithms/BubbleSort";
 import InsertionSort from "../../sorts/Algorithms/InsertionSort";
 import SelectionSort from "../../sorts/Algorithms/SelectionSort";
@@ -31,10 +31,8 @@ const MainContainer: React.FC<MainContainerProps> = function (
     <section className="mainContainer">
       <div className="mainContainer__items">
         <Routes>
-          <Route
-            path="/"
-            element={<BubbleSort settings={props.settings} />}
-          ></Route>
+          <Route path="/" element={<Navigate replace to="/bubble" />}></Route>
+
           <Route
             path="/bubble"
             element={<BubbleSort settings={props.settings} />}
@@ -95,6 +93,7 @@ const MainContainer: React.FC<MainContainerProps> = function (
             path="/cycle"
             element={<CycleSort settings={props.settings} />}
           ></Route>
+          <Route path="*" element={<Navigate replace to="/bubble" />}></Route>
         </Routes>
       </div>
     </section>

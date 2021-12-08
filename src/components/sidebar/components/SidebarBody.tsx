@@ -17,6 +17,7 @@ import {
 import { CgBoy, CgMenuCake } from "react-icons/cg";
 import { FaCocktail, FaBicycle } from "react-icons/fa";
 import { Link } from "react-router-dom";
+
 const SidebarBody: React.FC = function (): JSX.Element {
   return (
     <SidebarContent>

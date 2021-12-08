@@ -22,5 +22,19 @@
     white-space: nowrap;
     font-size: 1.4rem;
     color: azure;
+    &-logo {
+      padding-left: 2rem;
+      & a {
+        text-decoration: none;
+        font-size: 2rem;
+        &:hover {
+          color: white;
+        }
+        &:visited,
+        &:active {
+          color: white;
+        }
+      }
+    }
   }
 }
