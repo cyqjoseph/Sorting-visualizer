@@ -1,7 +1,9 @@
-### This project was built using React and Typescript, and features 15 different sorting algorithms grouped by their time complexities.
+## This project was built using React and Typescript, and features 15 different sorting algorithms grouped by their time complexities.
+
+
+[Link to deployed project](https://sorting-react-visualizer.netlify.app/)
 
 ---
-
 ##### Dependencies include:
 
 - TypeScript
@@ -22,4 +24,4 @@
 - Quick Sort also posed a challenge during implementation, as its algorithm required recursion and calling multiple setState calls while sorting was executed showed a few bugs. Another annoying problem was the start pointer value being exactly equal to the length of the array, throwing multiple errors in the recursive calls which made it harder to pinpoint. Fortunately this was easily fixed by creating a seperate function to handle this edge case.
 - Merge Sort was by far the hardest to implement, as the sorting itself could not be done in place hence combining it with React was the biggest challenge. I chose the bottom-up iterative approach instead of its recursive approach as the latter would not work well with the setState calls in React.
 - Radix sort's algorithm was not hard to implement, but building its component taught me the importance of using shallow / deep copies of arrays as many bugs encountered in development were caused by using objects with direct references to the original copy. [Explanation Article](https://www.freecodecamp.org/news/copying-stuff-in-javascript-how-to-differentiate-between-deep-and-shallow-copies-b6d8c1ef09cd/)
-- Project still in development...
+- This project took about a month from creation to deployment, overall very satisfied with how it turned out!
