@@ -28,7 +28,6 @@ const reducer = function (
         data: new SortArray(action.payload).randomizeSortArray(),
       };
     case ActionType.SORT_START:
-      console.log("Started");
       return {
         ...state,
         loading: action.payload.loading,

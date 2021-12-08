@@ -7,7 +7,7 @@ import {
 } from "../actions";
 
 export const randomize = function (length: number): RandomizeAction {
-  return { type: ActionType.RANDOMIZE, payload: length }; //edit
+  return { type: ActionType.RANDOMIZE, payload: length };
 };
 
 export const startArraySorting = function (): SortStartAction {
@@ -19,7 +19,6 @@ export const startArraySorting = function (): SortStartAction {
   };
 };
 export const completeArraySorting = function (): SortCompleteAction {
-  console.log("Finished");
   return {
     type: ActionType.SORT_COMPLETE,
     payload: { loading: false }, // fix this
