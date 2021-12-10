@@ -1,7 +1,10 @@
 ## This project was built using React and Typescript, and features 15 different sorting algorithms grouped by their time complexities.
 
+[Project Link](https://sorting-react-visualizer.netlify.app/)
 
-[Link to deployed project](https://sorting-react-visualizer.netlify.app/)
+
+![Project Image](https://github.com/BunAppleTeeth/Sorting-visualizer/blob/main/public/gif.gif)
+
 
 ---
 ##### Dependencies include:
